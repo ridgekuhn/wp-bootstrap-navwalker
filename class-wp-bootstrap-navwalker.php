@@ -234,6 +234,17 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 			}
 
 			/**
+			 * Insert the WooCommerce product category thumbnail
+			 */
+			if( $item->object == 'product_cat' ) {
+				$thumbnail_id = get_term_meta( $item->object_id, 'thumbnail_id', true );
+
+				if( $thumbnail = wp_get_attachment_image( $thumbnail_id ) ) {
+					$item_output .= $thumbnail;
+				}
+			}
+
+			/**
 			 * Initiate empty icon var, then if we have a string containing any
 			 * icon classes form the icon markup with an <i> element. This is
 			 * output inside of the item before the $title (the link text).
@@ -285,17 +296,6 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 			}
 
 			$item_output .= isset( $args->after ) ? $args->after : '';
-
-			/**
-			 * Prepend the WooCommerce product category thumbnail
-			 */
-			if( $item->object == 'product_cat' ) {
-				$thumbnail_id = get_term_meta( $item->object_id, 'thumbnail_id', true );
-
-				if( $thumbnail = wp_get_attachment_image( $thumbnail_id ) ) {
-					$item_output = $thumbnail . $item_output;
-				}
-			}
 
 			/**
 			 * END appending the internal item contents to the output.
