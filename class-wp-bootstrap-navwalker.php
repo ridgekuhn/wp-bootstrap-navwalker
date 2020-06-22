@@ -234,7 +234,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 			}
 
 			/**
-			 * Insert the WooCommerce product category thumbnail
+			 * Insert the WooCommerce product category thumbnail into $output
 			 */
 			if( $item->object == 'product_cat' ) {
 				$thumbnail_id = get_term_meta( $item->object_id, 'thumbnail_id', true );
@@ -282,7 +282,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 			}
 
 			// Put the item contents into $output.
-			$item_output .= isset( $args->link_before ) ? $args->link_before . $icon_html . $title . $args->link_after : '';
+			$item_output .= isset( $args->link_before ) ? $args->link_before . $icon_html . '<span>' . $title . '</span>' . $args->link_after : '';
 			/**
 			 * This is the end of the internal nav item. We need to close the
 			 * correct element depending on the type of link or link mod.
