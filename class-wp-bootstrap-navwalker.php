@@ -239,7 +239,10 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 			if( $item->object == 'product_cat' ) {
 				$thumbnail_id = get_term_meta( $item->object_id, 'thumbnail_id', true );
 
-				if( $thumbnail = wp_get_attachment_image( $thumbnail_id ) ) {
+				if( $thumbnail = wp_get_attachment_image( $thumbnail_id,
+																									$size ='thumbnail',
+																									$icon = false,
+																									array( "class" => "product-cat-img attachment-thumbnail size-thumbnail" )	) ) {
 					$item_output .= $thumbnail;
 				}
 			}
