@@ -236,7 +236,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 			/**
 			 * Insert the WooCommerce product category thumbnail into $output
 			 */
-			if( $item->object == 'product_cat' ) {
+			if( $item->object == 'product_cat' && $item->menu_item_parent != 0 ) {
 				$thumbnail_id = get_term_meta( $item->object_id, 'thumbnail_id', true );
 
 				if( $thumbnail = wp_get_attachment_image( $thumbnail_id,
